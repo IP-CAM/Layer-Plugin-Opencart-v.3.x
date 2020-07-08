@@ -355,7 +355,7 @@ class ControllerExtensionPaymentLayerpayment extends Controller {
 
         return array(                       
             'Content-Type: application/json',                                 
-            'Authorization: Bearer '.$this->apikey.':'.$token,
+            'Authorization: Bearer '.$this->apikey.':'.$this->secretkey,
             'X-O-Timestamp: '.$time_stamp
         );
 
