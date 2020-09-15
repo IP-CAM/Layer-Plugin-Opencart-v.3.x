@@ -160,7 +160,8 @@ class ControllerExtensionPaymentLayerpayment extends Controller {
                     'layer_order_amount'    => $this->request->post['layer_order_amount'],
                     'woo_order_id'     		=> $this->request->post['woo_order_id'],
                 );
-				
+			
+			$layer_payment_id = $this->request->post['layer_payment_id'];	
 			$orderid = $pdata['woo_order_id'];
 			$order_info = $this->model_checkout_order->getOrder($orderid);
 			
@@ -204,7 +205,7 @@ class ControllerExtensionPaymentLayerpayment extends Controller {
                                 case 'authorized':
 								case 'captured': 
 									$this->session->data['success'] = "Payment is successful...";
-									$this->model_checkout_order->addOrderHistory($orderid, $this->config->get('payment_layerpayment_order_status_id'),'Payment Successful',true);
+									$this->model_checkout_order->addOrderHistory($orderid, $this->config->get('payment_layerpayment_order_status_id'),'Payment Successful,  '$layer_payment_id.'',true);
 									$this->response->redirect($this->url->link('checkout/success', '', true));				
                                     break;
                                 case 'failed':								    
