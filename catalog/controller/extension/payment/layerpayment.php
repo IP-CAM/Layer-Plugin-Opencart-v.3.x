@@ -126,11 +126,14 @@ class ControllerExtensionPaymentLayerpayment extends Controller {
 							function (response) {
 								console.log(response)
 								if(response !== null || response.length > 0 ){
-									if(response.payment_id !== undefined){
+									if(response.payment_id !== undefined && response.status !== 'cancelled'){
 										document.getElementById('layer_payment_id').value = response.payment_id;
+										document.layer_payment_int_form.submit();
+									}else if(response.payment_id !== undefined && response.status == 'cancelled'){
+										Layer.cancel;
 									}
 								}
-								document.layer_payment_int_form.submit();
+								
 							},
 							function (err) {
 								//alert(err.message);
