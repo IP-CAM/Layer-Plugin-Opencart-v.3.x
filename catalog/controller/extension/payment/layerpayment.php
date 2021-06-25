@@ -133,7 +133,7 @@ class ControllerExtensionPaymentLayerpayment extends Controller {
 										Layer.cancel;
 									}
 								}
-								document.layer_payment_int_form.submit();
+								
 							},
 							function (err) {
 								//alert(err.message);
